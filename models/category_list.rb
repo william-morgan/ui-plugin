@@ -40,7 +40,6 @@ CategoryList.class_eval do
             if c.latest_post_id?
               subcategories_meta[:category_id] = c.id
               subcategories_meta[:category_name] = c.name
-<<<<<<< HEAD
               subcategories_meta[:category_topic_count] = c.topic_count
               subcategories_meta[:category_post_count] = c.post_count
               subcategories_meta[:category_slug] = c.slug
@@ -51,13 +50,11 @@ CategoryList.class_eval do
               subcategories_meta[:last_post_user_id] = c.latest_post.topic.last_post_user_id
               subcategories_meta[:last_post_username] = User.where("id=?", subcategories_meta[:last_post_user_id]).pluck("username")[0]
               subcategories_meta[:last_post_username_lower] = User.where("id=?", subcategories_meta[:last_post_user_id]).pluck("username_lower")[0]
-=======
               subcategories_meta[:last_post_updated_at] = c.latest_post.topic.updated_at
               subcategories_meta[:last_post_topic_id] = c.latest_post.topic.id
               subcategories_meta[:last_post_topic_title] = c.latest_post.topic.title
               subcategories_meta[:last_post_user_id] = c.latest_post.topic.last_post_user_id
               subcategories_meta[:last_post_username] = User.where("id=?", subcategories_meta[:last_post_user_id]).pluck("username")[0]
->>>>>>> bf78fd98c8835a88551ab43b33fe7d87c151656d
               subcategories_metas[c.parent_category_id] << subcategories_meta
             end
             to_delete << c
