@@ -46,6 +46,7 @@ CategoryList.class_eval do
               subcategories_meta[:last_post_updated_at] = c.latest_post.topic.updated_at.strftime("%Y-%m-%d")
               subcategories_meta[:last_post_topic_id] = c.latest_post.topic.id
               subcategories_meta[:last_post_topic_title] = c.latest_post.topic.title
+              subcategories_meta[:last_post_topic_slug] = c.latest_post.topic.slug
               subcategories_meta[:last_post_topic_highest_post_number] = c.latest_post.topic.highest_post_number
               subcategories_meta[:last_post_user_id] = c.latest_post.topic.last_post_user_id
               subcategories_meta[:last_post_username] = User.where("id=?", subcategories_meta[:last_post_user_id]).pluck("username")[0]
