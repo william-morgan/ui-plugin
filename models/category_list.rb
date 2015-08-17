@@ -43,7 +43,7 @@ CategoryList.class_eval do
               subcategories_meta[:category_topic_count] = c.topic_count
               subcategories_meta[:category_post_count] = c.post_count
               subcategories_meta[:category_slug] = c.slug
-              subcategories_meta[:last_post_updated_at] = c.latest_post.topic.updated_at.strftime("%Y-%m-%d")
+              subcategories_meta[:last_post_updated_at] = c.latest_post.topic.created_at
               subcategories_meta[:last_post_topic_id] = c.latest_post.topic.id
               subcategories_meta[:last_post_topic_title] = c.latest_post.topic.title
               subcategories_meta[:last_post_topic_slug] = c.latest_post.topic.slug
