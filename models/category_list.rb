@@ -37,25 +37,27 @@ CategoryList.class_eval do
 
             subcategories[c.parent_category_id] << c.id
             subcategories_meta = {}
-            if c.latest_post_id?
+            last_topic=Topic.where(:category_id=>c.id,:visible=>true, :archived=>false, :closed=>false).order("updated_at DESC").limit(1)
+            if last_topic.size > 0
+              #dont instantiate hash unless there's a subcategory topic
               subcategories_meta[:category_id] = c.id
               subcategories_meta[:category_name] = c.name
               subcategories_meta[:category_topic_count] = c.topic_count
               subcategories_meta[:category_post_count] = c.post_count
               subcategories_meta[:category_slug] = c.slug
-              subcategories_meta[:last_post_updated_at] = c.latest_post.topic.created_at
-              subcategories_meta[:last_post_topic_id] = c.latest_post.topic.id
-              subcategories_meta[:last_post_topic_title] = c.latest_post.topic.title
-              subcategories_meta[:last_post_topic_slug] = c.latest_post.topic.slug
-              subcategories_meta[:last_post_topic_highest_post_number] = c.latest_post.topic.highest_post_number
-              subcategories_meta[:last_post_user_id] = c.latest_post.topic.last_post_user_id
-              subcategories_meta[:last_post_username] = User.where("id=?", subcategories_meta[:last_post_user_id]).pluck("username")[0]
-              subcategories_meta[:last_post_username_lower] = User.where("id=?", subcategories_meta[:last_post_user_id]).pluck("username_lower")[0]
-              subcategories_meta[:last_post_updated_at] = c.latest_post.topic.updated_at
-              subcategories_meta[:last_post_topic_id] = c.latest_post.topic.id
-              subcategories_meta[:last_post_topic_title] = c.latest_post.topic.title
-              subcategories_meta[:last_post_user_id] = c.latest_post.topic.last_post_user_id
-              subcategories_meta[:last_post_username] = User.where("id=?", subcategories_meta[:last_post_user_id]).pluck("username")[0]
+              subcategories_meta[:last_post_topic_id] = last_topic.pluck(:id)[0]
+              subcategories_meta[:last_post_topic_title] = last_topic.pluck(:title)[0]
+              subcategories_meta[:last_post_topic_slug] = last_topic.pluck(:slug)[0]
+              subcategories_meta[:last_post_topic_highest_post_number] = last_topic.pluck(:highest_post_number)[0]
+              #last post info
+              last_post = Post.where(:topic_id=>subcategories_meta[:last_post_topic_id],:hidden=>false, :deleted_at=>[nil]).order("created_at DESC").limit(1)
+              subcategories_meta[:last_post_created_at] = last_post.pluck(:created_at)[0]
+              subcategories_meta[:last_post_user_id] = last_post.pluck(:user_id)[0]
+              #last post user info
+              last_user = User.where("id=?", subcategories_meta[:last_post_user_id])
+              subcategories_meta[:last_post_username] = last_user.pluck("username")[0]
+              subcategories_meta[:last_post_username_lower] = last_user.pluck("username_lower")[0]
+              #append to subcategories_meta list
               subcategories_metas[c.parent_category_id] << subcategories_meta
             end
             to_delete << c
