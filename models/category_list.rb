@@ -34,7 +34,8 @@ CategoryList.class_eval do
           if c.parent_category_id.present?
             subcategories[c.parent_category_id] ||= []
             subcategories_metas[c.parent_category_id] ||= []
-
+            #this is not a great block of code
+            #will be fixed after additional live testing
             subcategories[c.parent_category_id] << c.id
             subcategories_meta = {}
             last_topic=Topic.where(:category_id=>c.id,:visible=>true, :archived=>false, :closed=>false).order("updated_at DESC").limit(1)
