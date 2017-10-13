@@ -1,7 +1,7 @@
 # name: subcategory_meta
 # about: adds extra subcategory information to the category list serializer
 # author: william morgan
-
+gem 'json', '>= 1.8'
 after_initialize do
   load File.expand_path("../models/category.rb", __FILE__)
   load File.expand_path("../models/category_list.rb", __FILE__)
