@@ -2,17 +2,13 @@ import { registerUnbound } from 'discourse-common/lib/helpers';
 
 
 
-registerUnbound('moment', function(options, date) {
-    var opts = options.hash;
+registerUnbound('moment', function(date) {
     var today = moment().startOf('day').format("YYYY-MM-DD");
     var yesterday =  moment().startOf('day').subtract(1, 'days').format("YYYY-MM-DD");
     var check_date = moment(date).format("YYYY-MM-DD");
     var check_time = moment(date).format("hh:mm A");
     var html;
     var date_class = "column-date";
-    if(opts.post=="true"){
-        date_class += "-post";
-    }
     if(today==check_date){
         html =  "<span class='" + date_class + "'>Today</span> <span class='column-time'>" + check_time + "</span>";
     }
