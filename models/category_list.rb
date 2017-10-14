@@ -3,6 +3,10 @@ CategoryList.class_eval do
     find_categories
   end
   private
+    def latest_post_only?
+      @options[:latest_posts] and latest_posts_count == 1
+    end
+    
     def find_categories
       @categories = Category
                         .includes(:featured_users, :topic_only_relative_url, subcategories: [:topic_only_relative_url, :featured_users])
