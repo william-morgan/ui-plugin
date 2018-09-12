@@ -9,7 +9,7 @@ CategoryList.class_eval do
     
     def find_categories
       @categories = Category
-                        .includes(:featured_users, :topic_only_relative_url, subcategories: [:topic_only_relative_url, :featured_users])
+                        .includes(:latest_post, :topic_only_relative_url, subcategories: [:topic_only_relative_url, :latest_post])
                         .secured(@guardian)
 
       if @options[:parent_category_id].present?
@@ -42,9 +42,8 @@ CategoryList.class_eval do
             #will be fixed after additional live testing
             subcategories[c.parent_category_id] << c.id
             subcategories_meta = {}
-            last_topic=Topic.where(:category_id=>c.id,:visible=>true, :archived=>false, :closed=>false).order("updated_at DESC").limit(1)
             if last_topic.size > 0
-              last_topic = last_topic[0]
+	      last_topic = Topic.where(:id=>c.pluck("posts.topic_id"))
               #dont instantiate hash unless there's a subcategory topic
               subcategories_meta[:category_id] = c.id
               subcategories_meta[:category_name] = c.name
