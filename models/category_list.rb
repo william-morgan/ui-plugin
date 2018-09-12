@@ -43,7 +43,7 @@ CategoryList.class_eval do
             subcategories[c.parent_category_id] << c.id
             subcategories_meta = {}
 			last_topic = Topic.where(:id=>c.latest_topic_id).first
-            if last_topic.size > 0
+            if last_topic!=nil
               #dont instantiate hash unless there's a subcategory topic
               subcategories_meta[:category_id] = c.id
               subcategories_meta[:category_name] = c.name
