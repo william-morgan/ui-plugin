@@ -2,6 +2,7 @@ import { registerUnbound } from 'discourse-common/lib/helpers';
 
 registerUnbound("fsc-helper", function(title){
   var changed_title = "DEFAULT TITLE";
+  var html  = "<span>" + changed_title + "</span";
   var separator = " ";
   var min   = 0;
   var max   = 40;
