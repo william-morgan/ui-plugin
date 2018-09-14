@@ -2,7 +2,7 @@ import { registerUnbound } from 'discourse-common/lib/helpers';
 
 
 
-registerUnbound('moment', function(date) {
+registerUnbound('fts-helper', function(date) {
     var today = moment().startOf('day').format("YYYY-MM-DD");
     var yesterday =  moment().startOf('day').subtract(1, 'days').format("YYYY-MM-DD");
     var check_date = moment(date).format("YYYY-MM-DD");
