@@ -140,7 +140,7 @@ createWidget("post-avatar", {
 
   settings: {
     size: "large",
-    displayPosterName: false
+    displayPosterName: true
   },
 
   html(attrs) {
