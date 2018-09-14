@@ -5,6 +5,7 @@ export default createWidget("post-placeholder", {
   tagName: "article.placeholder",
   template: hbs`
     <div class='row'>
+      <div class='topic-title-bar'><span class='topic-title-timestamp'></span></div>
       <div class='topic-avatar'>
         <div class='placeholder-avatar'></div>
       </div>
