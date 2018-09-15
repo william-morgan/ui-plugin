@@ -1,9 +1,8 @@
 User.class_eval do
-  has_one :profile_fields
   attr_accessor :profile_fields
   
   def profile_fields
-    profile_fields
+    profile_fields(self.id)
   end
   private
     def profile_fields
