@@ -1,5 +1,5 @@
 UserSerializer.class_eval do
 
-  attributes :profile_fields
+  attributes :user_post_data
 
 end
