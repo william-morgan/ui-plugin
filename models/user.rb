@@ -1,5 +1,5 @@
 User.class_eval do
-  def profile_Fields
+  def profile_fields
     profile_fields
   end
   private
