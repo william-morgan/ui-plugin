@@ -11,5 +11,6 @@ User.class_eval do
       @profile_fields[:post_count] = Post.where(user_id: id, hidden: false).count
       @profile_fields[:reputation] = UserAction.where(user_id: id, action_type: UserAction::LIKE).count
       @profile_fields[:rep_power]  =  User.where(:id=>2).pluck("date_part('day',now()- created_at)").first.to_i
+      @profile_fields
     end
 end
