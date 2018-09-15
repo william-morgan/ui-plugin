@@ -1,5 +1,5 @@
 User.class_eval do
-  has_one: :profile_fields
+  has_one :profile_fields
   attr_accessor :profile_fields
   
   def profile_fields
