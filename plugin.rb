@@ -8,5 +8,5 @@ after_initialize do
   load File.expand_path("../models/user.rb", __FILE__)
   load File.expand_path("../serializers/category_detailed_serializer.rb", __FILE__)
   load File.expand_path("../serializers/user_serializer.rb", __FILE__)
-  load File.expand_path("../static/views/login.html.erb", __FILE__)
+  load File.expand_path("...views/static/login.html.erb", __FILE__)
 end
