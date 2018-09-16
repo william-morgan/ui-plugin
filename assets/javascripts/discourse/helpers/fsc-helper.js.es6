@@ -5,7 +5,7 @@ registerUnbound("fsc-helper", function(params){
   var html;
   var separator = " ";
   var min   = 0;
-  var title_to_eval = params[0];
+  var title = params[0];
   var max = params[1];
   if(title.length > min && title.length < max || title.length==max){
     changed_title = title;
