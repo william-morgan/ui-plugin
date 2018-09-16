@@ -1,11 +1,10 @@
 import { registerUnbound } from 'discourse-common/lib/helpers';
 
-registerUnbound("fsc-helper", function(title, maximum=40){
+registerUnbound("fsc-helper", function(title, max=40){
   var changed_title = "DEFAULT TITLE";
   var html;
   var separator = " ";
   var min   = 0;
-  var max   = maximum > 0 ? maximum: 40;
   if(title.length > min && title.length < max || title.length==max){
     changed_title = title;
   }
