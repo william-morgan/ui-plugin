@@ -5,7 +5,7 @@ registerUnbound("fsc-helper", function(title, maximum=40){
   var html;
   var separator = " ";
   var min   = 0;
-  var max   = maximum > 0 ? parseInt(maximum): 40;
+  var max   = maximum > 0 ? maximum: 40;
   if(title.length > min && title.length < max || title.length==max){
     changed_title = title;
   }
