@@ -1,6 +1,6 @@
 import { registerUnbound } from 'discourse-common/lib/helpers';
 
-registerUnbound("fsc-helper", function(title){
+registerUnbound("fscm-helper", function(title){
   var changed_title = "DEFAULT TITLE";
   var html;
   var separator = " ";
