@@ -2,10 +2,10 @@ import { registerUnbound } from "discourse-common/lib/helpers";
 
 registerUnbound("topic-link-mobile", (topic, args) => {
   const title = topic.get("fancyTitle");
-  const changed_title = new String();
   const url = topic.linked_post_number
     ? topic.urlForPostNumber(topic.linked_post_number)
     : topic.get("lastUnreadUrl");
+  var changed_title = new String();
   var separator = " ";
   var min   = 0;
   var max = 44;
