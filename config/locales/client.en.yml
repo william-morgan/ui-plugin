@@ -37,7 +37,7 @@ en:
       expand_chat: Expand chat
       compress_chat: Shrink chat
       close_chat: Close chat
-      pms_title: Search TrackTalk Members:
+      pms_title: "Search TrackTalk Members:"
       pms_autocomplete: Enter a username...
       groups_title: Groups
       categories_title: Channels
