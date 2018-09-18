@@ -31,7 +31,7 @@ en:
       nav_title: "Chat"
       load_more: "Load more"
       loading_messages: "Loading messages..."
-      no_more_messages: "That's all there is!"
+      no_more_messages: "Conversation"
       logged_out: "You haven't logged in! Please log in or create an account to participate"
       go_to_chat: "Open full page chat"
       expand_chat: Expand chat
