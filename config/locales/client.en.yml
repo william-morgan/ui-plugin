@@ -40,7 +40,7 @@ en:
       close_chat: Close chat
       pms_title: "DIRECT MESSAGES:"
       pms_autocomplete: Enter a username...
-      groups_title: "ACTIVE DISCUSSIONS:"
+      groups_title: "GROUP CONVERSATIONS:"
       categories_title: Channels
       admin:
         disabled: "TrackChat has been disabled. Please re-enable it to continue."
