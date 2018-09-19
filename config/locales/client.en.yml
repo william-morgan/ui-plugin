@@ -39,7 +39,7 @@ en:
       close_chat: Close chat
       pms_title: "Search TrackTalk Members:"
       pms_autocomplete: Enter a username...
-      groups_title: Groups
+      groups_title: Fall Topics
       categories_title: Channels
       admin:
         disabled: "TrackChat has been disabled. Please re-enable it to continue."
@@ -49,7 +49,7 @@ en:
         title: "Channel Title"
         permissions: "Permissions"
         category: "Forum"
-        groups: "Group(s)"
+        groups: "Fall Topic(s)"
         category_label: "Channel is associated with the following Forum:"
         allowed_groups_label: "Channel is visible to the following Groups:"
         menu_title: "Chats"
