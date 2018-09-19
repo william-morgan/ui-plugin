@@ -2,7 +2,7 @@ en:
   js:
     babble:
       preferences:
-        title: TrackChat v1.0
+        title: TrackChat
         babble_disabled: Disable TrackChat completely
         babble_sound: Enable browser sound for new chat notifications
       typing:
@@ -31,13 +31,13 @@ en:
       nav_title: "Chat"
       load_more: "Load more"
       loading_messages: "Loading messages..."
-      no_more_messages: "Conversation"
+      no_more_messages: "Conversation History"
       logged_out: "You haven't logged in! Please log in or create an account to participate"
       go_to_chat: "Open full page chat"
       expand_chat: Expand chat
       compress_chat: Shrink chat
       close_chat: Close chat
-      pms_title: "Search TrackTalk Members:"
+      pms_title: "Direct Messages:"
       pms_autocomplete: Enter a username...
       groups_title: Fall Topics
       categories_title: Channels
@@ -49,7 +49,7 @@ en:
         title: "Channel Title"
         permissions: "Permissions"
         category: "Forum"
-        groups: "Fall Topic(s)"
+        groups: "Channel"
         category_label: "Channel is associated with the following Forum:"
         allowed_groups_label: "Channel is visible to the following Groups:"
         menu_title: "Chats"
