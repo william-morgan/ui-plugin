@@ -2,10 +2,10 @@ en:
   js:
     babble:
       preferences:
-        title: TrackChat
-        babble_disabled: Disable TrackChat completely
+        title: Console
+        babble_disabled: Disable Console completely
         babble_sound: Enable browser sound for new chat notifications
-        babble_open_by_default: Open TrackChat automatically
+        babble_open_by_default: Open Console automatically
       typing:
         single:  "%{first} is typing..."
         double:  "%{first} and %{second} are typing..."
@@ -25,7 +25,7 @@ en:
       topic_visibility_tooltip: "This chat is visible to: {{groupNames}}"
       view_topics_tooltip: "View other chat channels"
       view_chat_tooltip: "Back to the current chat"
-      select_topic: "TrackChat"
+      select_topic: "Console"
       post_deleted_by: "Post deleted by {{username}}"
       post_edited: (edited)
       is_typing: "is typing..."
@@ -43,7 +43,7 @@ en:
       groups_title: "GROUP CONVERSATIONS:"
       categories_title: Channels
       admin:
-        disabled: "TrackChat has been disabled. Please re-enable it to continue."
+        disabled: "Console has been disabled. Please re-enable it to continue."
         new: "New Channel"
         new_category: "New Channel"
         none_selected: "Select a channel to get started"
