@@ -38,9 +38,9 @@ en:
       expand_chat: Expand chat
       compress_chat: Shrink chat
       close_chat: Close chat
-      pms_title: "LIVE MESSAGING:"
+      pms_title: "LIVE MESSAGING SYSTEM:"
       pms_autocomplete: Enter a username...
-      groups_title: "GROUP CONVERSATIONS:"
+      groups_title: "FUNCTIONs:"
       categories_title: Channels
       admin:
         disabled: "Console has been disabled. Please re-enable it to continue."
