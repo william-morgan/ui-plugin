@@ -38,7 +38,7 @@ en:
       expand_chat: Expand chat
       compress_chat: Shrink chat
       close_chat: Close chat
-      pms_title: "DIRECT MESSAGES:"
+      pms_title: "LIVE MESSAGING:"
       pms_autocomplete: Enter a username...
       groups_title: "GROUP CONVERSATIONS:"
       categories_title: Channels
