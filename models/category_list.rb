@@ -42,7 +42,7 @@ CategoryList.class_eval do
             #will be fixed after additional live testing
             subcategories[c.parent_category_id] << c.id
             subcategories_meta = {}
-			last_topic = Topic.where(:id=>c.latest_topic_id).first
+            last_topic = Topic.where(:id=>Post.where(:id=>c.latest_post_id).pluck(:topic_id)[0]).first
             if last_topic!=nil
               #dont instantiate hash unless there's a subcategory topic
               subcategories_meta[:category_id] = c.id
@@ -55,8 +55,8 @@ CategoryList.class_eval do
               subcategories_meta[:last_post_topic_slug] = last_topic.slug
               subcategories_meta[:last_post_topic_highest_post_number] = last_topic.highest_post_number
               #last post info
-              last_post = Post.where(:topic_id=>subcategories_meta[:last_post_topic_id],:hidden=>false, :deleted_at=>[nil]).order("created_at DESC").limit(1)[0]
-              subcategories_meta[:last_post_created_at] = last_post.created_at
+              last_post = Post.where(:topic_id=>subcategories_meta[:last_post_topic_id],:hidden=>false, :deleted_at=>[nil]).order("last_posted_at DESC").limit(1)[0]
+              subcategories_meta[:last_post_posted_at] = last_post.last_posted_at
               subcategories_meta[:last_post_user_id] = last_post.user_id
               #last post user info
               last_user = User.where("id=?", subcategories_meta[:last_post_user_id])[0]
