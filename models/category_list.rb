@@ -55,8 +55,8 @@ CategoryList.class_eval do
               subcategories_meta[:last_post_topic_slug] = last_topic.slug
               subcategories_meta[:last_post_topic_highest_post_number] = last_topic.highest_post_number
               #last post info
-              last_post = Post.where(:topic_id=>subcategories_meta[:last_post_topic_id],:hidden=>false, :deleted_at=>[nil]).order("last_posted_at DESC").limit(1)[0]
-              subcategories_meta[:last_post_posted_at] = last_post.last_posted_at
+              last_post = Post.where(:topic_id=>last_topic.id,:hidden=>false, :deleted_at=>[nil]).order("created_at DESC").limit(1)[0]
+              subcategories_meta[:last_post_posted_at] = last_post.created_at
               subcategories_meta[:last_post_user_id] = last_post.user_id
               #last post user info
               last_user = User.where("id=?", subcategories_meta[:last_post_user_id])[0]
