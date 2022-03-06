@@ -38,12 +38,10 @@ CategoryList.class_eval do
           if c.parent_category_id.present?
             subcategories[c.parent_category_id] ||= []
             subcategories_metas[c.parent_category_id] ||= []
-            #this is not a great block of code
-            #will be fixed after additional live testing
             subcategories[c.parent_category_id] << c.id
             subcategories_meta = {}
-            last_topic = Topic.where(:id=>Post.where(:id=>c.latest_post_id).pluck(:topic_id)[0]).first
-            if last_topic!=nil
+            last_topic = Topic.select(:id, :title, :slug, :highest_post_number).where(:category_id => c.id, :deleted_at => nil, :closed => false, :archived => false, :visible => true).order('last_posted_at DESC').limit(1).first
+            if !last_topic.nil?
               #dont instantiate hash unless there's a subcategory topic
               subcategories_meta[:category_id] = c.id
               subcategories_meta[:category_name] = c.name
@@ -55,11 +53,11 @@ CategoryList.class_eval do
               subcategories_meta[:last_post_topic_slug] = last_topic.slug
               subcategories_meta[:last_post_topic_highest_post_number] = last_topic.highest_post_number
               #last post info
-              last_post = Post.where(:topic_id=>last_topic.id,:hidden=>false, :deleted_at=>[nil]).order("created_at DESC").limit(1)[0]
+              last_post = Post.where(:topic_id=>last_topic.id,:hidden_at=>nil, :deleted_at=>nil).order("created_at DESC").limit(1).first
               subcategories_meta[:last_post_posted_at] = last_post.created_at
               subcategories_meta[:last_post_user_id] = last_post.user_id
               #last post user info
-              last_user = User.where("id=?", subcategories_meta[:last_post_user_id])[0]
+              last_user = User.select(:username, :username_lower).where("id=?", subcategories_meta[:last_post_user_id]).first
               subcategories_meta[:last_post_username] = last_user.username
               subcategories_meta[:last_post_username_lower] = last_user.username_lower
               #append to subcategories_meta list
