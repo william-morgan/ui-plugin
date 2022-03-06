@@ -9,7 +9,7 @@ registerUnbound("topic-link-mobile", (topic, args) => {
   var separator = " ";
   var min   = 0;
   var max = 44;
-  if(title.length > min && title.length < max || title.length==max){
+  if(title.length > min && (title.length < max || title.length==max)){
     changed_title = title;
   }
   else{
