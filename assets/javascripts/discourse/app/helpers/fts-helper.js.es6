@@ -1,5 +1,5 @@
 import { registerUnbound } from 'discourse-common/lib/helpers';
-
+import { htmlSafe } from '@ember/template';
 
 
 registerUnbound('fts-helper', function(date) {
@@ -18,5 +18,5 @@ registerUnbound('fts-helper', function(date) {
     else{
         html = "<span class='" + date_class + "'>" + check_date + "</span> <span class='column-time'>" + check_time + "</span>";
     }
-  return new Handlebars.SafeString(html);
+  return htmlSafe(html);
 });
