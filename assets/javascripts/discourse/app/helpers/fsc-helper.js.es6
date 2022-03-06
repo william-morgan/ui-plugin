@@ -1,4 +1,5 @@
 import { registerUnbound } from 'discourse-common/lib/helpers';
+import { htmlSafe } from '@ember/template';
 
 registerUnbound("fsc-helper", function(title){
   var changed_title = "DEFAULT TITLE";
@@ -18,7 +19,7 @@ registerUnbound("fsc-helper", function(title){
     }
   }
   html = "<span>" + changed_title + "</span>";
-  return new Handlebars.SafeString(html);
+  return htmlSafe(html);
  });
 
 
