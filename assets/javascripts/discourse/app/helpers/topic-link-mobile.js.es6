@@ -10,12 +10,17 @@ registerUnbound("topic-link-mobile", (topic, args) => {
   var separator = " ";
   var min   = 0;
   var max = 44;
-  if(title.length > min && (title.length < max || title.length==max)){
+  if(title.length > min && title.length <=max){
     changed_title = title;
   }
   else{
     if(title.length > max){
+      if(title.includes(separator)){
         changed_title = title.substr(0, title.lastIndexOf(separator, (max-3))) + "..."; 
+      }
+      else{
+       changed_title = title.substr(0, max-3) + "..."; 
+      }
     }
     else{
       changed_title = title;
