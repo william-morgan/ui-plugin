@@ -13,10 +13,10 @@ registerUnbound('fts-helper', function(date) {
         html =  "<span class='" + date_class + "'>Today</span> <span class='column-time'>at " + check_time + "</span>";
     }
     else if(yesterday==check_date){
-        html =  "<span class='" + date_class + "'>Yesterday at</span> <span class='column-time'>at " + check_time + "</span>";
+        html =  "<span class='" + date_class + "'>Yesterday </span> <span class='column-time'>at " + check_time + "</span>";
     }
     else{
-        html = "<span class='" + date_class + "'>" + check_date + " at</span> <span class='column-time'>at " + check_time + "</span>";
+        html = "<span class='" + date_class + "'>" + check_date + "</span> <span class='column-time'>at " + check_time + "</span>";
     }
   return htmlSafe(html);
 });
