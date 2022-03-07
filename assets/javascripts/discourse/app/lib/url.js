@@ -106,7 +106,7 @@ const DiscourseURL = EmberObject.extend({
   jumpToPost(postNumber, opts) {
     opts = opts || {};
     const holderId = `#post_header_${postNumber}`;
-
+console.log(`Hook 1: ${holderID}`);
     _transitioning = postNumber > 1;
 
     schedule("afterRender", () => {
@@ -114,7 +114,7 @@ const DiscourseURL = EmberObject.extend({
         let $holder = $(holderId);
         let holderHeight = $holder.height();
         let windowHeight = $(window).height() - offsetCalculator();
-
+console.log(`Hook 2: ${holderID} ${holderHeight} ${windowHeight}`);
         if (holderHeight > windowHeight) {
           $(window).scrollTop(
             $holder.offset().top + (holderHeight - JUMP_END_BUFFER)
@@ -136,6 +136,7 @@ const DiscourseURL = EmberObject.extend({
       if (opts.anchor) {
         selector = `#main #${opts.anchor}, a[name=${opts.anchor}]`;
         holder = document.querySelector(selector);
+  console.log(`Hook 3: ${opts.anchor} ${selector} ${holder}`);
       }
 
       if (!holder) {
@@ -160,7 +161,7 @@ const DiscourseURL = EmberObject.extend({
         const scrollTop = $(window).scrollTop();
         const windowHeight = $(window).height() - offsetCalculator();
         const height = $(holder).height();
-
+console.log(`Hook 5: ${holder} ${opts.skipIfOnScreen} ${elementTop} ${scrollTop} ${windowHeight} ${height} ${opts.anchor}`);
         if (
           elementTop > scrollTop &&
           elementTop + height < scrollTop + windowHeight
