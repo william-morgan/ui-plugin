@@ -10,13 +10,13 @@ registerUnbound('fts-helper', function(date) {
     var html;
     var date_class = "column-date";
     if(today==check_date){
-        html =  "<span class='" + date_class + "'>Today</span> <span class='column-time'>at " + check_time + "</span>";
+        html =  "<span class='" + date_class + "'>Today</span> <span class='column-time'>" + check_time + "</span>";
     }
     else if(yesterday==check_date){
-        html =  "<span class='" + date_class + "'>Yesterday </span> <span class='column-time'>at " + check_time + "</span>";
+        html =  "<span class='" + date_class + "'>Yesterday </span> <span class='column-time'>" + check_time + "</span>";
     }
     else{
-        html = "<span class='" + date_class + "'>" + check_date + "</span> <span class='column-time'>at " + check_time + "</span>";
+        html = "<span class='" + date_class + "'>" + check_date + "</span> <span class='column-time'>" + check_time + "</span>";
     }
   return htmlSafe(html);
 });
