@@ -106,7 +106,7 @@ const DiscourseURL = EmberObject.extend({
   jumpToPost(postNumber, opts) {
     opts = opts || {};
     const holderId = `#post_header_${postNumber}`;
-console.log(`Hook 1: ${holderID}`);
+console.log(`Hook 1: ${holderId} ${opts}`);
     _transitioning = postNumber > 1;
 
     schedule("afterRender", () => {
@@ -114,7 +114,7 @@ console.log(`Hook 1: ${holderID}`);
         let $holder = $(holderId);
         let holderHeight = $holder.height();
         let windowHeight = $(window).height() - offsetCalculator();
-console.log(`Hook 2: ${holderId} ${holderHeight} ${windowHeight}`);
+console.log(`Hook 2: ${holderId} ${opts.jumpEnd} ${holderHeight} ${windowHeight}`);
         if (holderHeight > windowHeight) {
           $(window).scrollTop(
             $holder.offset().top + (holderHeight - JUMP_END_BUFFER)
