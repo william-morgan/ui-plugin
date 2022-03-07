@@ -114,7 +114,7 @@ console.log(`Hook 1: ${holderID}`);
         let $holder = $(holderId);
         let holderHeight = $holder.height();
         let windowHeight = $(window).height() - offsetCalculator();
-console.log(`Hook 2: ${holderID} ${holderHeight} ${windowHeight}`);
+console.log(`Hook 2: ${holderId} ${holderHeight} ${windowHeight}`);
         if (holderHeight > windowHeight) {
           $(window).scrollTop(
             $holder.offset().top + (holderHeight - JUMP_END_BUFFER)
