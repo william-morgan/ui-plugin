@@ -106,7 +106,7 @@ const DiscourseURL = EmberObject.extend({
   jumpToPost(postNumber, opts) {
     opts = opts || {};
     const holderId = `#post_header_${postNumber}`;
-console.log(`Hook 1: ${holderId} ${opts}`);
+console.log(`Hook 1: ${holderId} ${JSON.stringify(opts)}`);
     _transitioning = postNumber > 1;
 
     schedule("afterRender", () => {
@@ -142,10 +142,12 @@ console.log(`Hook 2: ${holderId} ${opts.jumpEnd} ${holderHeight} ${windowHeight}
       if (!holder) {
         selector = holderId;
         holder = document.querySelector(selector);
+  console.log(`Hook 7: ${selector} ${holder}`);
       }
 
       if (lockon) {
         lockon.clearLock();
+  console.log(`Hook 8: ${lockon}`);
       }
 
       lockon = new LockOn(selector, {
@@ -155,6 +157,7 @@ console.log(`Hook 2: ${holderId} ${opts.jumpEnd} ${holderHeight} ${windowHeight}
           lockon = null;
         },
       });
+      console.log(`Hook 9: ${lockon}`);
 
       if (holder && opts.skipIfOnScreen) {
         const elementTop = lockon.elementTop();
@@ -166,6 +169,7 @@ console.log(`Hook 5: ${holder} ${opts.skipIfOnScreen} ${elementTop} ${scrollTop}
           elementTop > scrollTop &&
           elementTop + height < scrollTop + windowHeight
         ) {
+console.log(`Hook 10: ${elementTop} ${scrollTop} ${height} ${windowHeight} ${elementTop > scrollTop} ${elementTop + height < scrollTop + windowHeight}`);
           _transitioning = false;
           return;
         }
@@ -174,6 +178,7 @@ console.log(`Hook 5: ${holder} ${opts.skipIfOnScreen} ${elementTop} ${scrollTop}
       lockon.lock();
       if (lockon.elementTop() < 1) {
         _transitioning = false;
+  console.log(`Hook 9: ${lockon} ${lockon.elementTop()}`);
         return;
       }
     });
