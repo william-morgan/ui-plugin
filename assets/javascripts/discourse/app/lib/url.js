@@ -106,8 +106,7 @@ const DiscourseURL = EmberObject.extend({
   jumpToPost(postNumber, opts) {
     opts = opts || {};
     const holderId = `#post_header_${postNumber}`;
-console.log(`Hook 1: ${holderId}`);
-console.log(opts);
+
     _transitioning = postNumber > 1;
 
     schedule("afterRender", () => {
@@ -115,7 +114,7 @@ console.log(opts);
         let $holder = $(holderId);
         let holderHeight = $holder.height();
         let windowHeight = $(window).height() - offsetCalculator();
-console.log(`Hook 2: ${holderId} ${opts.jumpEnd} ${holderHeight} ${windowHeight}`);
+  
         if (holderHeight > windowHeight) {
           $(window).scrollTop(
             $holder.offset().top + (holderHeight - JUMP_END_BUFFER)
@@ -137,19 +136,15 @@ console.log(`Hook 2: ${holderId} ${opts.jumpEnd} ${holderHeight} ${windowHeight}
       if (opts.anchor) {
         selector = `#main #${opts.anchor}, a[name=${opts.anchor}]`;
         holder = document.querySelector(selector);
-  console.log(`Hook 3: ${opts.anchor} ${selector} ${holder}`);
       }
 
       if (!holder) {
         selector = holderId;
         holder = document.querySelector(selector);
-  console.log(`Hook 7: ${selector}`);
-  console.log(holder);
       }
 
       if (lockon) {
         lockon.clearLock();
-  console.log(`Hook 8: ${lockon}`);
       }
 
       lockon = new LockOn(selector, {
@@ -159,20 +154,16 @@ console.log(`Hook 2: ${holderId} ${opts.jumpEnd} ${holderHeight} ${windowHeight}
           lockon = null;
         },
       });
-      console.log(`Hook 9: ${opts.originalTopOffset}`);
-      console.log(lockon);
 
       if (holder && opts.skipIfOnScreen) {
         const elementTop = lockon.elementTop();
         const scrollTop = $(window).scrollTop();
         const windowHeight = $(window).height() - offsetCalculator();
         const height = $(holder).height();
-console.log(`Hook 5: ${holder} ${opts.skipIfOnScreen} ${elementTop} ${scrollTop} ${windowHeight} ${height} ${opts.anchor}`);
         if (
           elementTop > scrollTop &&
           elementTop + height < scrollTop + windowHeight
         ) {
-console.log(`Hook 10: ${elementTop} ${scrollTop} ${height} ${windowHeight} ${elementTop > scrollTop} ${elementTop + height < scrollTop + windowHeight}`);
           _transitioning = false;
           return;
         }
@@ -181,18 +172,13 @@ console.log(`Hook 10: ${elementTop} ${scrollTop} ${height} ${windowHeight} ${ele
       lockon.lock();
       if (lockon.elementTop() < 1) {
         _transitioning = false;
-  console.log(`Hook 9: ${lockon.elementTop()}`);
-  console.log(lockon);
         return;
       }
     });
   },
 
   replaceState(path) {
-    console.log("Hook 11");
-    console.log(path);
     if (this.router.currentURL !== path) {
-      console.log(this.router.currentURL !== path);
       // Always use replaceState in the next runloop to prevent weird routes changing
       // while URLs are loading. For example, while a topic loads it sets `currentPost`
       // which triggers a replaceState even though the topic hasn't fully loaded yet!
